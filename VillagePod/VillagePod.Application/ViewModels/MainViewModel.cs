@@ -1,15 +1,18 @@
-﻿namespace VillagePod.Application.ViewModels
+﻿using System.Windows.Controls;
+using VillagePod.Application.Views;
+
+namespace VillagePod.Application.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private ViewModelBase? _selectedView;
+        private UserControl? _selectedView;
 
         public MainViewModel()
         {
-            SelectedView = new AuthenticationViewModel();
+            SelectedView = new AuthenticationUserControl();
         }
 
-        public ViewModelBase? SelectedView
+        public UserControl? SelectedView
         {
             get => _selectedView;
             set { _selectedView = value; OnPropertyChanged(nameof(SelectedView)); }

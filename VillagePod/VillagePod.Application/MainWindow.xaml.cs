@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using VillagePod.Application.ViewModels;
 
 namespace VillagePod.Application
@@ -9,6 +10,12 @@ namespace VillagePod.Application
         {
             DataContext = new MainViewModel();
             InitializeComponent();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
         }
     }
 }
