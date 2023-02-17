@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Styles\" />
-    <Folder Include="Resources\" />
+    <None Remove="Resources\Images\logo-vp.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\logo-vp.png" />
   </ItemGroup>
 
 </Project>

@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MaterialDesignExtensions" Version="3.3.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\VillagePod.Persistence\VillagePod.Persistence.csproj" />
     <ProjectReference Include="..\VillagePod.Utility\VillagePod.Utility.csproj" />
   </ItemGroup>

@@ -10,6 +10,7 @@ namespace VillagePod.Application.ViewModels
         #region Fields
         private string? _login;
         private string? _password;
+        private bool _isAuthenticated;
         private IEncryptedCredentialService _encryptedCredentialService;
 
         private RelayCommand? _authenticateUserCommand;
@@ -34,6 +35,12 @@ namespace VillagePod.Application.ViewModels
             get => _password;
             set { _password = value; OnPropertyChanged(nameof(Password)); }
         }
+
+        public bool IsAuthenticated
+        {
+            get => _isAuthenticated;
+            set { _isAuthenticated = value; OnPropertyChanged(nameof(IsAuthenticated)); }
+        }
         #endregion
 
         #region Commands
@@ -57,11 +64,17 @@ namespace VillagePod.Application.ViewModels
             };
 
             var result = _encryptedCredentialService.SaveEncryptedCredential(accountCredential);
+
+            if (result)
+                IsAuthenticated = true;
         }
 
         private void LogoutUserCommandHandler(object obj)
         {
             _encryptedCredentialService.DeleteEncryptedCredential(ApplicationConstants.CREDENTIAL_KEY);
+            Login = null;
+            Password = null;
+            IsAuthenticated = false;
         }
         #endregion
 
@@ -75,6 +88,8 @@ namespace VillagePod.Application.ViewModels
                 Login = accountInfo.Login;
                 Password = accountInfo.Password;
             }
+
+            // call your endpoint wrapper here and check result
         }
         #endregion
     }
