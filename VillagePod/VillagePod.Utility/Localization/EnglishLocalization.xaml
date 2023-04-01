@@ -6,4 +6,16 @@
     <system:String x:Key="AuthenticationViewPassword">Password</system:String>
     <system:String x:Key="AuthenticationViewContinue">Continue</system:String>
     <system:String x:Key="AuthenticationViewLogout">Logout</system:String>
+    <system:String x:Key="SystemSelectionViewPleaseSelectPos">Please select a POS device</system:String>
+    <system:String x:Key="SystemSelectionViewNext">Next</system:String>
+    <system:String x:Key="MainScreenLogout">Log out</system:String>
+    <system:String x:Key="MainScreenChangePos">Change POS</system:String>
+    <system:String x:Key="MainScreenConnectedTo">Connected to [{0}]</system:String>
+    <system:String x:Key="MainScreenExit">Exit</system:String>
+    <system:String x:Key="MainScreenReconnect">Reconnect</system:String>
+    <system:String x:Key="MainScreenVillagePod">VillagePod</system:String>
+    <system:String x:Key="MainScreenHelpAndSupport">Help and Support</system:String>
+    <system:String x:Key="MainScreenHelpUpdate">Update</system:String>
+    <system:String x:Key="MainScreenShowLogs">Show logs</system:String>
+    <system:String x:Key="MainScreenSupport">Support</system:String>
 </ResourceDictionary>

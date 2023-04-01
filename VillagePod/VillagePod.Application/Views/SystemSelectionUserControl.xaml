@@ -1,0 +1,84 @@
+﻿<UserControl
+    x:Class="VillagePod.Application.Views.SystemSelectionUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:VillagePod.Utility.Converters;assembly=VillagePod.Utility"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:VillagePod.Application.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:NotNullOrEmptyConverter x:Key="NotNullOrEmptyConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*" />
+            <RowDefinition Height="0.85*" />
+            <RowDefinition Height="0.10*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Grid.Row="1"
+            Height="320"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Vertical">
+
+            <Image
+                Height="50"
+                Margin="5,20"
+                Source="pack://application:,,,/VillagePod.Utility;component/Resources/Images/logo-vp.png" />
+
+            <Label
+                Margin="5"
+                HorizontalContentAlignment="Center"
+                Content="{StaticResource SystemSelectionViewPleaseSelectPos}" />
+
+            <ListBox
+                Height="135"
+                Margin="5"
+                ItemsSource="{Binding PosDeviceRepresenters}"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                SelectedValue="{Binding SelectedPosDevice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton
+                            Margin="10,0"
+                            Padding="5,0"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="{StaticResource DefaultBlueC}"
+                            Content="{Binding PosName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            GroupName="{Binding PosName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            IsChecked="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Button
+                Margin="5,10,5,0"
+                Background="{StaticResource DefaultBlueC}"
+                BorderBrush="{x:Null}"
+                Command="{Binding NextUserCommand}"
+                Content="{DynamicResource SystemSelectionViewNext}"
+                Foreground="White">
+                <Button.Style>
+                    <Style BasedOn="{StaticResource MaterialDesignRaisedLightButton}" TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedPosDevice, Converter={StaticResource NotNullOrEmptyConverter}}" Value="True">
+                                <Setter Property="IsEnabled" Value="True" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding SelectedPosDevice, Converter={StaticResource NotNullOrEmptyConverter}}" Value="False">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

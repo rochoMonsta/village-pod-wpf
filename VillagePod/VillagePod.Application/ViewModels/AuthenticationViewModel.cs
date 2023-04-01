@@ -67,6 +67,9 @@ namespace VillagePod.Application.ViewModels
 
             if (result)
                 IsAuthenticated = true;
+
+            if (IsAuthenticated)
+                ApplicationManager.ExecuteOnLoginEvent();
         }
 
         private void LogoutUserCommandHandler(object obj)

@@ -10,8 +10,11 @@ namespace VillagePod.Utility.Converters
         {
             try
             {
-                var text = value as string;
-                return !string.IsNullOrWhiteSpace(text);
+                if (value is string stringValue)
+                    return !string.IsNullOrWhiteSpace(stringValue);
+
+                return value != null;
+
             }
             catch(Exception ex)
             {
